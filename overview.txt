@@ -1,0 +1,16 @@
+Goal:
+  Our goal of this porject is to not give access and secret key or not login any pipeline through access key or secret key 
+  we will another system to verify a user and get into aws and do its work and then gone .
+  so we want this that aws trust github that github will verify user and aws will trust on that token or user and aws will give
+  you access to user aws service but only the permission that is allowed to that github .
+
+  the main goal of this project is to secure my state file add locking , versioning and and alarm so that when ever deleted
+  it can be notiy and add cloud trails so every event is log along with we will add encyption at rest we will configure KMS 
+  so that that data that is been at the rest will remain portected and no one can read the state file and the people that can access
+  are the one that have role permisison of s3 and decrypting your kms key kms descrypt permission is mandatory . yes we have 
+  two roles plan role and when that will run it can have only read permission menas it can descrypt and read the s3 state file 
+  but cannot edit and on the other hand the apply have the access to delete , update aur do thing create specfic things in aws 
+  but with boundary and we will configure and alarm on state delete and we have to configure versioning so that any miss have or
+  corruption can save us we can rollback to old verion . We will do this on pr and when merge with main this pipeline will run .
+  Github OIDC federation: 
+  GitHub apni identity prove karta hai, aur AWS verify karke usay access deta hai — lekin sirf tab jab IAM Role ki trust policy allow kare.
