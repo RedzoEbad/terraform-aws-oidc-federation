@@ -27,18 +27,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Diagnose GitHub OIDC Claims
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const token = await core.getIDToken('sts.amazonaws.com');
-            const payload = JSON.parse(
-              Buffer.from(token.split('.')[1], 'base64url').toString()
-            );
-            console.log('OIDC issuer:', payload.iss);
-            console.log('OIDC audience:', payload.aud);
-            console.log('OIDC subject:', payload.sub);
-
       - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -62,3 +50,6 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan -input=false -no-color
+    
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false -no-color
